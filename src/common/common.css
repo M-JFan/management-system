@@ -1,0 +1,66 @@
+
+.supplierSelect .addSupplierInfo {
+  border: 1px solid #329e82;
+  color: #329e82;
+}
+.supplierSelect .selectBtn:hover{
+  border: 1px solid #329e82;
+  color: #329e82;
+}
+.supplierSelect .el-select{
+  width: 182px;
+}
+.tableContent /deep/ .el-table th,
+.tableContent /deep/ .el-table tr,
+.tableContent /deep/ .el-table,
+.tableContent /deep/ .el-table__expanded-cell{
+  background: none;
+}
+.optionActive i{
+  cursor: pointer;
+    font-size: 16px;
+    margin-right: 15px;
+}
+.optionActive .delete{
+  color: #f12727;
+}
+.optionActive .edit{
+  color: #329e82;
+}
+.pagination {
+  /* position: absolute; */
+  /* bottom: 30px; */
+  margin-top: 20px;
+}
+.breadcrumb {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+  transition: color 0.3s;
+  margin-bottom: 20px;
+}
+.el-pager li.active{
+  background-color: #329e82!important;
+}
+.el-pagination button:hover{
+  color: #329e82!important;
+}
+.el-loading-spinner .path{
+  stroke: #329e82!important;
+}
+.el-loading-spinner .el-loading-text{
+  color: #329e82!important;
+}
+.el-button:active {
+  color: #329e82!important;
+  border-color: #329e82!important;
+  outline: 0;
+}
+.el-select-dropdown__item.selected{
+  color: #329e82!important;
+}
+.el-select .el-input.is-focus .el-input__inner{
+  border-color: #329e82!important;
+}
+.el-popconfirm__main{
+  margin: 5px 0 7px 0;
+}
