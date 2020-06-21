@@ -27,8 +27,8 @@ export default {
   data() {
     return {
       loginForm: {
-        userName: "admin",
-        password: "12345678"
+        userName: "",
+        password: ""
       },
       loginFormRules: {
         userName: [
@@ -44,8 +44,8 @@ export default {
       this.$refs[name].validate(valid => {
         if (valid) {
           LoginApi({
-            username: '',
-            password: ''
+            username: this.loginForm.userName,
+            password: this.loginForm.password
           })
             .then(res => {
               this.$store.commit("setToken", res.data.data.token);
