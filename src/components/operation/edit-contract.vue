@@ -47,7 +47,7 @@
           </el-form-item>
         </div>-->
         <div>
-          <el-form-item label="合同附件" prop="fileList">
+          <el-form-item label="合同附件">
             <el-upload
               class="upload-demo"
               action

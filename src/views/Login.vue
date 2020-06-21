@@ -44,8 +44,8 @@ export default {
       this.$refs[name].validate(valid => {
         if (valid) {
           LoginApi({
-            username: this.loginForm.userName,
-            password: this.loginForm.password
+            username: '',
+            password: ''
           })
             .then(res => {
               this.$store.commit("setToken", res.data.data.token);

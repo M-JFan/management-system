@@ -106,7 +106,7 @@ export default {
             realname: this.addAdminForm.realName,
             password: this.addAdminForm.pass,
             mobile: this.addAdminForm.phoneNumber,
-            roles: [3, 4]
+            roles: [1]
           })
             .then(res => {
               if (res.data.code == 200) {
