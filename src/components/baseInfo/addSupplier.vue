@@ -21,7 +21,7 @@
       </el-form-item>
       <!-- <el-form-item label="状态" prop="state">
         <el-switch v-model="addSupplierForm.state"></el-switch>
-      </el-form-item> -->
+      </el-form-item>-->
       <el-form-item label="公司地址" prop="address">
         <el-input type="textarea" v-model="addSupplierForm.address" placeholder="公司地址"></el-input>
       </el-form-item>
@@ -33,7 +33,7 @@
   </el-dialog>
 </template>
 <script>
-import { AddSupplierApi } from "../../api/api";
+import { AddSupplierApi, SupplierListApi } from "../../api/api";
 export default {
   props: {
     addSupplierVisible: {
@@ -66,27 +66,34 @@ export default {
     /* 关闭弹窗 */
     close() {
       this.$emit("getAddSupplierVisible", false);
-      this.resetForm('ruleForm')
+      this.resetForm("ruleForm");
     },
     /* 新增供应商 */
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           AddSupplierApi({
-            name:this.addSupplierForm.supplierName,
-            address:this.addSupplierForm.address,
-            contact:this.addSupplierForm.phoneNumber
-          }).then(res=>{
-            if(res.data.code == 200) {
-              this.$notify({
-                title: '成功',
-                message: '供应商新增成功',
-                type: 'success'
-              });
-            this.$emit("getAddSupplierVisible", false);
-            this.resetForm('ruleForm')
-            }
-          }).catch()
+            name: this.addSupplierForm.supplierName,
+            address: this.addSupplierForm.address,
+            contact: this.addSupplierForm.phoneNumber
+          })
+            .then(res => {
+              if (res.data.code == 200) {
+                this.$notify({
+                  title: "成功",
+                  message: "供应商新增成功",
+                  type: "success"
+                });
+                SupplierListApi()
+                  .then(res => {
+                    this.$store.commit("setSupplierList", res.data.data.items);
+                  })
+                  .catch();
+                this.$emit("getAddSupplierVisible", false);
+                this.resetForm("ruleForm");
+              }
+            })
+            .catch();
         } else {
           return false;
         }

@@ -109,7 +109,7 @@
 </template>
 <script>
 import axios from "axios";
-import { AddContractApi } from "../../api/api";
+import { AddContractApi, ContractListApi } from "../../api/api";
 export default {
   data() {
     return {
@@ -257,6 +257,11 @@ export default {
                   message: "合同新增完成",
                   type: "success"
                 });
+                ContractListApi()
+                  .then(res => {
+                    this.$store.commit("setContractList", res.data.data.items);
+                  })
+                  .catch();
                 this.$router.back(-1);
               }
             })

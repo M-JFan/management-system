@@ -26,14 +26,15 @@
         <el-input type="textarea" v-model="editSupplierForm.address"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">新增</el-button>
+        <el-button type="primary" @click="submitForm('ruleForm')">编辑</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
       </el-form-item>
     </el-form>
   </el-dialog>
 </template>
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import {SupplierListApi} from '../../api/api'
 export default {
   props: {
     editSupplierVisible: {
@@ -95,6 +96,9 @@ export default {
                 message: '供应商:'+this.editSupplierForm.supplierName+'编辑成功',
                 type: 'success'
               });
+            SupplierListApi().then(res=>{
+              this.$store.commit('setSupplierList',res.data.data.items)
+            }).catch()
             this.$emit("getAddSupplierVisible", false);
             this.resetForm('ruleForm')
             }
