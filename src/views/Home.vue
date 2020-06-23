@@ -20,8 +20,9 @@
       </el-container>
       <!-- 底部 -->
       <el-footer class="Footer" style="height:40px">
-        <div class="TipsContent">{{dateTime}},超级用户.所属组织:{{organization}}</div>
-        <div>2008-2016 AOSuite</div>
+        <!-- <div class="TipsContent">{{dateTime}},超级用户.所属组织:{{organization}}</div> -->
+        <div class="TipsContent">{{dateTime}},管理员</div>
+        <div>天津卷烟厂</div>
       </el-footer>
     </el-container>
   </div>
