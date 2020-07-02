@@ -22,7 +22,7 @@
       <el-footer class="Footer" style="height:40px">
         <!-- <div class="TipsContent">{{dateTime}},超级用户.所属组织:{{organization}}</div> -->
         <div class="TipsContent">{{dateTime}},管理员</div>
-        <div>沪ICP备20019760号</div>
+        <div>互联网ICP备案：沪ICP备20019760号</div>
       </el-footer>
     </el-container>
   </div>

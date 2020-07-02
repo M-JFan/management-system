@@ -16,6 +16,9 @@
         </el-form>
       </div>
     </div>
+    <div class="footer">
+      <p>互联网ICP备案：沪ICP备20019760号</p>
+    </div>
   </div>
 </template>
 
@@ -61,7 +64,7 @@ export default {
               }
             })
             .catch(error => {
-                this.$message.error("请输入正确的用户名和密码");
+              this.$message.error("请输入正确的用户名和密码");
             });
         }
       });
@@ -123,5 +126,14 @@ export default {
       background: #53bda2;
     }
   }
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 16px;
 }
 </style>
