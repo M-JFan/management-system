@@ -112,24 +112,6 @@ export function FetchPost(url, data = { data: data }, headers, params) {
       });
   });
 }
-/**
- * fetch Put请求
- * @param {String} url 请求地址
- * @param {Obejct} data
- * @return {Promise}
- */
-export function FetchPut(url, data = { data: data }, headers, params) {
-  return new Promise((resolve, reject) => {
-    axios
-      .put(url, data, headers, params)
-      .then(response => {
-        resolve(response);
-      })
-      .catch(err => {
-        reject(err);
-      });
-  });
-}
 
 /*  登录 */
 export const LoginApi = params => {

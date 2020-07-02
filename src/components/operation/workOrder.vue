@@ -90,19 +90,13 @@
                     <span style="color:#ffb400">发布</span>
                   </p>
                   <p v-else-if="item.status == 2">
-                    <span style="color:#6aa6ef">开始</span>
+                    <span style="color:#0033cc">进行中</span>
                   </p>
                   <p v-else-if="item.status == 3">
-                    <span style="color:#34d6ac">部分完成</span>
+                    <span style="color:#00cc00">完成</span>
                   </p>
                   <p v-else-if="item.status == 4">
-                    <span style="color:#329e82">完成</span>
-                  </p>
-                  <p v-else-if="item.status == 5">
-                    <span style="color:#f9bb06">取消</span>
-                  </p>
-                  <p v-else>
-                    <span style="color:red">关闭</span>
+                    <span style="color:red">拒绝</span>
                   </p>
                 </li>
                 <li>
@@ -122,26 +116,23 @@
         </el-table-column>
         <el-table-column label="状态" width="150">
           <template slot-scope="scope">
-            <div
-              :style="[scope.row.status == 2 ? {color:'#009cff'}:scope.row.status == 3 ? {color:'#ffb400'}:scope.row.status == 4 ? {color:'red'} : '']"
-            >
-              <span v-if="scope.row.status == 1">已发布</span>
-              <span v-else-if="scope.row.status == 2">进行中</span>
-              <span v-else-if="scope.row.status == 3">完成</span>
-              <span v-else>拒绝</span>
-            </div>
+            <span v-if="scope.row.status == 1" style="color:#606266">发布</span>
+            <span v-else-if="scope.row.status == 2" style="color:#0033cc">开始</span>
+            <span v-else-if="scope.row.status == 3" style="color:#67c23a">部分完成</span>
+            <span v-else-if="scope.row.status == 4" style="color:#00cc00">完成</span>
+            <span v-else-if="scope.row.status == 5" style="color:#999">取消</span>
+            <span v-else style="color:red">关闭</span>
           </template>
         </el-table-column>
         <el-table-column prop="publisher.realname" label="发布人" width="150"></el-table-column>
+        <el-table-column prop="operator.name" label="接受人" width="150"></el-table-column>
         <el-table-column label="操作" width="150">
           <template slot-scope="scope">
-            <div class="optionActive">
+            <div class="optionActive" v-if="scope.row.status != 5">
               <i class="el-icon-edit-outline edit" @click="editRow(scope.row)"></i>
-              <!-- <el-switch
-                v-model="scope.row.initiate"
-                @change="initiateSwitch"
-                active-color="#329e82"
-              ></el-switch>-->
+              <el-popconfirm title="确定删除此任务单吗？" @onConfirm="deleteRow(scope.row.id)">
+                <i class="el-icon-delete delete" slot="reference"></i>
+              </el-popconfirm>
             </div>
           </template>
         </el-table-column>
@@ -210,20 +201,24 @@ export default {
       orderInfo: {},
       stateList: [
         {
-          name: "已发布",
+          name: "发布",
           value: "1"
         },
         {
-          name: "进行中",
+          name: "开始",
           value: "2"
         },
         {
-          name: "完成",
+          name: "部分完成",
           value: "3"
         },
         {
-          name: "拒绝",
+          name: "完成",
           value: "4"
+        },
+        {
+          name: "取消",
+          value: "5"
         }
       ]
     };
@@ -329,6 +324,22 @@ export default {
       this.$router.push({
         path: "/add-work-order"
       });
+    },
+    /* 删除任务单 */
+    deleteRow(id){
+      axios
+          .post("/api/work-order/"+ id +"/cancel")
+          .then(res => {
+            if (res.data.code == 200) {
+            this.$notify({
+              title: "成功",
+              message: "任务单已删除",
+              type: "success"
+            });
+            this.getList();
+          }
+          })
+          .catch();
     }
   },
   created() {

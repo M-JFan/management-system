@@ -56,9 +56,9 @@
       </el-form-item>
       <el-form-item label="工作图片:">
         <div class="img">
-          <el-image v-show="orderInfo.pic1" style="width: 100px; height: 100px" :src="orderInfo.pic1"></el-image>
-          <el-image v-show="orderInfo.pic1" style="width: 100px; height: 100px" :src="orderInfo.pic2"></el-image>
-          <el-image v-show="orderInfo.pic1" style="width: 100px; height: 100px" :src="orderInfo.pic3"></el-image>
+          <el-image v-show="orderInfo.pic1 != null" style="width: 100px; height: 100px" :src="orderInfo.pic1"></el-image>
+          <el-image v-show="orderInfo.pic2 != null" style="width: 100px; height: 100px" :src="orderInfo.pic2"></el-image>
+          <el-image v-show="orderInfo.pic3 != null" style="width: 100px; height: 100px" :src="orderInfo.pic3"></el-image>
           <!-- <el-image
             style="width: 100px; height: 100px"
             :src="item"
@@ -67,7 +67,7 @@
         </div>
       </el-form-item>
       <el-form-item label="完成视频:">
-        <video v-show="orderInfo.video" class="video" :src="orderInfo.video" controls="controls"></video>
+        <video v-show="orderInfo.video" class="video" :src="orderInfo.video" controls="controls" style="width: 100%;height: 300px;"></video>
       </el-form-item>
     </el-form>
   </el-dialog>
