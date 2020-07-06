@@ -20,19 +20,13 @@
               <span style="color:#ffb400">发布</span>
             </p>
             <p v-else-if="orderInfo.status == 2">
-              <span style="color:#6aa6ef">开始</span>
+              <span style="color:#0033cc">进行中</span>
             </p>
             <p v-else-if="orderInfo.status == 3">
-              <span style="color:#34d6ac">部分完成</span>
+              <span style="color:#00cc00">完成</span>
             </p>
             <p v-else-if="orderInfo.status == 4">
-              <span style="color:#329e82">完成</span>
-            </p>
-            <p v-else-if="orderInfo.status == 5">
-              <span style="color:#f9bb06">取消</span>
-            </p>
-            <p v-else>
-              <span style="color:red">关闭</span>
+              <span style="color:red">拒绝</span>
             </p>
           </el-form-item>
         </el-col>
@@ -56,18 +50,36 @@
       </el-form-item>
       <el-form-item label="工作图片:">
         <div class="img">
-          <el-image v-show="orderInfo.pic1 != null" style="width: 100px; height: 100px" :src="orderInfo.pic1"></el-image>
-          <el-image v-show="orderInfo.pic2 != null" style="width: 100px; height: 100px" :src="orderInfo.pic2"></el-image>
-          <el-image v-show="orderInfo.pic3 != null" style="width: 100px; height: 100px" :src="orderInfo.pic3"></el-image>
+          <el-image
+            v-show="orderInfo.pic1 != null"
+            style="width: 100px; height: 100px"
+            :src="orderInfo.pic1"
+          ></el-image>
+          <el-image
+            v-show="orderInfo.pic2 != null"
+            style="width: 100px; height: 100px"
+            :src="orderInfo.pic2"
+          ></el-image>
+          <el-image
+            v-show="orderInfo.pic3 != null"
+            style="width: 100px; height: 100px"
+            :src="orderInfo.pic3"
+          ></el-image>
           <!-- <el-image
             style="width: 100px; height: 100px"
             :src="item"
             :preview-src-list="item.split()"
-          ></el-image> -->
+          ></el-image>-->
         </div>
       </el-form-item>
       <el-form-item label="完成视频:">
-        <video v-show="orderInfo.video" class="video" :src="orderInfo.video" controls="controls" style="width: 100%;height: 300px;"></video>
+        <video
+          v-show="orderInfo.video"
+          class="video"
+          :src="orderInfo.video"
+          controls="controls"
+          style="width: 100%;height: 300px;"
+        ></video>
       </el-form-item>
     </el-form>
   </el-dialog>
