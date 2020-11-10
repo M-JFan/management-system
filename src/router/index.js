@@ -10,7 +10,7 @@ export default new Router({
       name: 'Login',
       component: require('@/views/Login').default,
       meta: {
-        title: '厂场内管理系统'
+        title: '厂内管理系统'
       }
     },
     {
