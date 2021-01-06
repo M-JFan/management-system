@@ -12,7 +12,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/vue-fontawesome": "^0.1.9",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
     "node-sass": "^4.14.1",
